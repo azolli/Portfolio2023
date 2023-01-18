@@ -2,7 +2,7 @@
     import { spring } from 'svelte/motion'; 
 
     let sectionsOpacity = spring([0,0,0,0,0]);
-
+    let copyBannerOpacity = spring(0);
 
     // @ts-ignore
     let intersectionObserver;
@@ -51,9 +51,20 @@
         }
     }
 
+    function elementCopied(){
+        copyBannerOpacity.set(1)
+        setTimeout(() => {
+            copyBannerOpacity.set(0)
+        },2000)   
+    }
+
 </script>
 
-<section>
+<div class="border-2 border-[rgba(50,50,50,0.5)] p-4 bg-black fixed bottom-5 left-5 rounded-md" style="opacity: {$copyBannerOpacity}">
+    <p>Oh, you've copied something! Send It to interesting people!</p>
+</div>
+
+<section on:copy={elementCopied}>
     <section class="flex flex-col justify-center items-center my-12 h-[80vh]" style="opacity: {$sectionsOpacity[0]}" >
         <img class="max-w-xs rounded-full my-10 border-neutral-50 border-8" use:viewport on:enterViewport={() => sectionsOpacity.set([1,0,0,0,0])} src="https://media.licdn.com/dms/image/C4E03AQH0ZQ0Xe-J4AQ/profile-displayphoto-shrink_800_800/0/1653594699142?e=1679529600&v=beta&t=VWCg-Fgt9J9gvLP2TE6nXh-5LeYDMZh8R1ixHhCW56s" alt="Alessandro Zolli" />
         <h1 class="text-6xl font-semibold text-center">Hi, I'm Alessandro Zolli!</h1>
@@ -72,29 +83,54 @@
             <h1 class="text-3xl font-semibold text-left text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600" use:viewport on:enterViewport={() => sectionsOpacity.set([0.1,0.1,0.1,0.1,1])}>In the free time I like skiing and playing guitar.</h1>
         </article>
     </section>
-    <section class="flex justify-center flex-wrap">
-        <article class="m-2 bg-[rgb(44,42,46)] p-4 rounded-md w-[420px]">
-            <div>
-                <div class="flex items-center">
-                    <div class="rounded-full bg-yellow-500 w-4 h-4"></div>
-                    <h5 class="ml-2 uppercase font-bold text-yellow-500">In Progress</h5>
+    <section>
+        <h2 class="text-4xl font-bold text-center my-8">Education</h2>
+        <div class="flex justify-center flex-wrap">
+            <article class="m-2 bg-black border-2 border-[rgba(50,50,50,0.4)] p-4 rounded-md w-[420px]">
+                <div>
+                    <div class="flex items-center">
+                        <div class="rounded-full bg-yellow-500 w-4 h-4"></div>
+                        <h5 class="ml-2 uppercase font-bold text-yellow-500">In Progress</h5>
+                    </div>
+                    <h3 class="font-semibold text-xl">Politecnico di Torino</h3>
+                    <p>Engineering Bachelor Degree</p>
                 </div>
-                <h3 class="font-semibold text-xl">Politecnico di Torino</h3>
-                <p>Engineering Bachelor Degree</p>
-            </div>
-        </article>
-        <article class="m-2 bg-[rgb(44,42,46)] p-4 rounded-md w-[420px]">
-            <div>
-                <div class="flex items-center">
-                    <div class="rounded-full bg-green-400 w-4 h-4"></div>
-                    <h5 class="ml-2 uppercase font-bold text-green-400">Issued in 2022</h5>
+            </article>
+            <article class="m-2 bg-black border-2 border-[rgba(50,50,50,0.4)] p-4 rounded-md w-[420px]">
+                <div>
+                    <div class="flex items-center">
+                        <div class="rounded-full bg-green-400 w-4 h-4"></div>
+                        <h5 class="ml-2 uppercase font-bold text-green-400">Issued in 2022</h5>
+                    </div>
+                    <h3 class="font-semibold text-xl">Liceo Salesiano Valsalice</h3>
+                    <p>Maturità Scientifica Opz. Sc. App. (92/100)</p>
                 </div>
-                <h3 class="font-semibold text-xl">Liceo Salesiano Valsalice</h3>
-                <p>Maturità Scientifica Opz. Sc. App. (92/100)</p>
-            </div>
-        </article>
+            </article>
+        </div>
     </section>
-    <section class="h-[100vh]">
-
+    <section class="mt-24">
+        <h2 class="text-4xl font-bold text-center my-8">IT Skills</h2>
+        <div class="flex justify-center flex-wrap">
+            <article class="m-2 bg-black border-2 border-[rgba(50,50,50,0.4)] p-4 rounded-md w-[420px]">
+                <div>
+                    <div class="flex items-center">
+                        <div class="rounded-full bg-yellow-500 w-4 h-4"></div>
+                        <h5 class="ml-2 uppercase font-bold text-yellow-500">In Progress</h5>
+                    </div>
+                    <h3 class="font-semibold text-xl">Politecnico di Torino</h3>
+                    <p>Engineering Bachelor Degree</p>
+                </div>
+            </article>
+            <article class="m-2 bg-black border-2 border-[rgba(50,50,50,0.4)] p-4 rounded-md w-[420px]">
+                <div>
+                    <div class="flex items-center">
+                        <div class="rounded-full bg-green-400 w-4 h-4"></div>
+                        <h5 class="ml-2 uppercase font-bold text-green-400">Issued in 2022</h5>
+                    </div>
+                    <h3 class="font-semibold text-xl">Liceo Salesiano Valsalice</h3>
+                    <p>Maturità Scientifica Opz. Sc. App. (92/100)</p>
+                </div>
+            </article>
+        </div>
     </section>
 </section>
