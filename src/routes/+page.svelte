@@ -7,6 +7,22 @@
     // @ts-ignore
     let intersectionObserver;
 
+    const ioConfiguration = {
+        /**
+         * This rootMargin creates a horizontal line vertically centered
+         * that will help trigger an intersection at that the very point.
+         */
+        rootMargin: '-50% 0% -50% 0%',
+
+        /**
+         * This is the default so you could remove it.
+         * I just wanted to leave it here to make it more explicit
+         * as this threshold is the only one that works with the above
+         * rootMargin
+         */
+        threshold: 0
+    };
+
     function ensureIntersectionObserver() {
         // @ts-ignore
         if (intersectionObserver) return;
@@ -17,7 +33,7 @@
                     const eventName = entry.isIntersecting ? 'enterViewport' : 'exitViewport';
                     entry.target.dispatchEvent(new CustomEvent(eventName));
                 });
-            }
+            }, ioConfiguration
         );
     }
 
@@ -43,16 +59,16 @@
         <h1 class="text-6xl font-semibold text-center">Hi, I'm Alessandro Zolli!</h1>
     </section>
     <section class="max-w-xl mx-auto">
-        <article class="h-[80vh] flex flex-col justify-center" style="opacity: {$sectionsOpacity[1]}">
+        <article class="my-80 flex flex-col justify-center" style="opacity: {$sectionsOpacity[1]}">
             <h1 class="text-3xl font-semibold text-left text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600" use:viewport on:enterViewport={() => sectionsOpacity.set([0.1,1,0.1,0,0.1])}>I'm Alessandro Zolli, a 19 years old engineering student and software developer.</h1>
         </article>
-        <article class="h-[80vh] flex flex-col justify-center" style="opacity: {$sectionsOpacity[2]}">
+        <article class="my-80 flex flex-col justify-center" style="opacity: {$sectionsOpacity[2]}">
             <h1 class="text-3xl font-semibold text-left text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600" use:viewport on:enterViewport={() => sectionsOpacity.set([0.1,0.1,1,0.1,0.1])}>I'm based in Turin but I really like to explore new places and work remotely.</h1>
         </article>
-        <article class="h-[80vh] flex flex-col justify-center" style="opacity: {$sectionsOpacity[3]}">
+        <article class="my-80 flex flex-col justify-center" style="opacity: {$sectionsOpacity[3]}">
             <h1 class="text-3xl font-semibold text-left text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600" use:viewport on:enterViewport={() => sectionsOpacity.set([0.1,0.1,0.1,1,0.1])}>I started programming at 10 years old and today I work with advanced languages such as Rust and a lot of frameworks.</h1>
         </article>
-        <article class="h-[60vh] flex flex-col justify-center" style="opacity: {$sectionsOpacity[4]}">
+        <article class="my-80 flex flex-col justify-center" style="opacity: {$sectionsOpacity[4]}">
             <h1 class="text-3xl font-semibold text-left text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600" use:viewport on:enterViewport={() => sectionsOpacity.set([0.1,0.1,0.1,0.1,1])}>In the free time I like skiing and playing guitar.</h1>
         </article>
     </section>
