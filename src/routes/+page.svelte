@@ -1,7 +1,7 @@
 <script>
     import { spring } from 'svelte/motion'; 
 
-    let sectionsOpacity = spring([0,0,0,0,0]);
+    let sectionsOpacity = spring([1,0.3,0.3,0.3,0.3]);
     let copyBannerOpacity = spring(0);
     let skillsInteractive = spring([0,0,0])
 
@@ -76,7 +76,7 @@
 </nav>
 <section on:copy={elementCopied}>
     <section class="flex flex-col justify-center items-center my-12 h-[80vh]" style="opacity: {$sectionsOpacity[0]}" >
-        <img class="max-w-xs rounded-full my-10 border-neutral-50 border-8" use:viewport on:enterViewport={() => sectionsOpacity.set([1,0,0,0,0])} src="https://media.licdn.com/dms/image/C4E03AQH0ZQ0Xe-J4AQ/profile-displayphoto-shrink_800_800/0/1653594699142?e=1679529600&v=beta&t=VWCg-Fgt9J9gvLP2TE6nXh-5LeYDMZh8R1ixHhCW56s" alt="Alessandro Zolli" />
+        <img class="max-w-xs rounded-full my-10 border-neutral-50 border-8" use:viewport on:enterViewport={() => sectionsOpacity.set([1,0.3,0.3,0,0.3])} src="https://media.licdn.com/dms/image/C4E03AQH0ZQ0Xe-J4AQ/profile-displayphoto-shrink_800_800/0/1653594699142?e=1679529600&v=beta&t=VWCg-Fgt9J9gvLP2TE6nXh-5LeYDMZh8R1ixHhCW56s" alt="Alessandro Zolli" />
         <h1 class="text-4xl md:text-6xl font-semibold text-center">Hi, I'm Alessandro Zolli!</h1>
         <div class="flex my-4">
             <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/alessandrozolli/" class="mr-2"><img src="/linkedin.png" width="30" alt="LinkedIn" /></a>
