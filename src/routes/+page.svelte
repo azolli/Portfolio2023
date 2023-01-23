@@ -1,1 +1,1 @@
-<h1 class="text-6xl text-center font-semibold">Website in manteinance! Stay Tuned!</h1>
+<h1 class="text-4xl text-center font-semibold">Website in manteinance!</h1>
